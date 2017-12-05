@@ -1,4 +1,4 @@
-#!/usr/bin/ groovy
+#!/usr/bin/env groovy
 properties([[$class: 'GithubProjectProperty', displayName: '', projectUrlStr: 'https://github.com/Mamatha8/multibranch.git/'], pipelineTriggers([])])
 pipeline {
     agent any
