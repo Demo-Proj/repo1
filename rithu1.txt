@@ -1,25 +1,27 @@
 #!/usr/bin/env groovy
-properties([[$class: 'GithubProjectProperty', displayName: '', projectUrlStr: 'https://github.com/Mamatha8/multibranch.git/'], pipelineTriggers([])])
+
+properties([
+    [$class: 'GithubProjectProperty',
+     displayName: '',
+     projectUrlStr: 'https://github.com/Mamatha8/multibranch.git/'],
+     pipelineTriggers([githubPush()])])
+
 pipeline {
-    agent any
+    agent any 
+    
     stages {
-        stage('Build') {
+        stage('Build') { 
+            steps { 
+                echo 'make changes hie'
+            }
+        }
+        stage('Test'){
             steps {
-                sh 'ls -l'
-                dir ('foo') {
-                 writeFile file:'dummy', text:''
-                 }
-                }
-               }
-                stage('Test') {
-                 steps {
-                  sh 'ls -l'
-                  }
-                 }
-                 stage('Deploy') {
-                  steps {
-                       echo 'Hello World !!'
-                       }
-                      }
-                     }
-                    }
+                echo 'make check changes'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'make publish'
+            }
+        }
